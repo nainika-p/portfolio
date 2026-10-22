@@ -1,4 +1,4 @@
-# Ather Portfolio — React + Vite
+Portfolio — React + Vite
 
 A single-page creative portfolio (Home, About, Selected Work, Education, Contact, Footer) built with
 React, Vite, plain CSS and Lucide icons. The contact form sends real email through

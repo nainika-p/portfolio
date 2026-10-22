@@ -20,7 +20,7 @@ const projects = [
       "Developed four colourway variations using a shared vector-rendered scooter model. Each direction uses a coordinated palette and material swatches to communicate its design intent.",
     outcome:
       "The study makes the visual differences between four directions easier to compare. The visuals are vector-rendered concept representations, and the digital colours are approximations rather than physical material samples.",
-    url: "public/projects/urban-scooter-cmf.html",
+    url: "/projects/urban-scooter-cmf.html",
   },
   {
     id: "smart-speaker-exploration",
@@ -42,7 +42,7 @@ const projects = [
       "Explore variations in silhouette, speaker grille, surface finish and control details, supported by a coordinated colour and material palette.",
     outcome:
       "The concepts provide a starting point for comparing design directions. Further refinement would consider usability, acoustic requirements and physical prototyping.",
-    url: "public/projects/smart-speaker.html",
+    url: "/projects/smart-speaker.html",
   },
   {
     id: "ai-design-exploration-assistant",
@@ -64,7 +64,7 @@ const projects = [
       "Map a proposed workflow around reference collection, concept grouping and side-by-side comparison. Identify where AI assistance could help and where designer review remains important.",
     outcome:
       "The concept provides a starting point for evaluating an AI-supported design workflow. Its usability and potential time savings would need to be validated through testing with designers.",
-    url: "public/projects/urban-scooter-modern.html",
+    url: "/projects/urban-scooter-modern.html",
   },
 ];
 

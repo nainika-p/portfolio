@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Urban Electric Scooter: CMF Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ECEAE5;--card:#F6F4F0;--ink:#222220;--mute:#6E6B64;--line:#D6D3CC;--stage1:#F1EFEA;--stage2:#DEDBD3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171716;--card:#1F1F1D;--ink:#ECE9E2;--mute:#9A968C;--line:#33322F}}
+:root[data-theme="dark"]{--bg:#171716;--card:#1F1F1D;--ink:#ECE9E2;--mute:#9A968C;--line:#33322F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 Inter,system-ui,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:72px 28px 96px}
+h1{font:300 clamp(34px,5.2vw,60px)/1.05 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0 0 18px;max-width:14em}
+h2{font:400 26px/1.2 Fraunces,Georgia,serif;margin:0 0 6px}
+h3{font:500 16px/1.3 Inter,sans-serif;margin:0}
+p{margin:0}
+.lede{color:var(--mute);max-width:46em}
+header{padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:72px;display:grid;gap:14px}
+section{margin-bottom:88px}
+.sec-head{margin-bottom:28px;max-width:42em}
+.sec-head p{color:var(--mute)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.stage{background:radial-gradient(120% 90% at 50% 20%,var(--stage1),var(--stage2));aspect-ratio:600/380}
+.stage svg{display:block;width:100%;height:100%}
+.info{padding:24px 26px 28px;display:grid;gap:18px}
+.info .desc{color:var(--mute)}
+.sw-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sw-row figure{margin:0}
+.sw{height:64px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.sw.matte{background-color:var(--body);background-image:radial-gradient(rgba(0,0,0,.07) 1px,transparent 1.3px);background-size:4px 4px}
+.sw.satin{background:linear-gradient(115deg,var(--metal) 0%,color-mix(in srgb,var(--metal) 55%,#fff) 26%,var(--metal) 44%,color-mix(in srgb,var(--metal) 78%,#000) 70%,color-mix(in srgb,var(--metal) 60%,#fff) 100%)}
+.sw.tex{background-color:var(--trim);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.08) 0 1px,transparent 1px 4px),repeating-linear-gradient(-45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 4px)}
+.sw.acc{background:var(--acc)}
+figcaption{font-size:12.5px;line-height:1.4;margin-top:7px;color:var(--mute)}
+figcaption b{display:block;color:var(--ink);font-weight:500}
+.mat3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.mat3 .sw{height:170px}
+.mat3 .card{padding:22px;display:grid;gap:14px}
+.mat3 .sw{border-radius:3px}
+.det{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.det .stage{aspect-ratio:4/3}
+.det .info{padding:16px 18px 20px;gap:4px}
+.det .info p{color:var(--mute);font-size:13.5px}
+.m1{--body:#E8E0CF;--trim:#2A2A2C;--seat:#2D2B29;--acc:#8D8573;--metal:#BDB5A4;--sheen:.05}
+.m2{--body:#9CAB95;--trim:#34373A;--seat:#3B3E41;--acc:#D0D8CA;--metal:#A7AEA6;--sheen:.05}
+.m3{--body:#F0E4D0;--trim:#3A2E29;--seat:#4A3025;--acc:#B5573A;--metal:#B7A18C;--sheen:.05}
+.m4{--body:#50545A;--trim:#1D1E20;--seat:#26272A;--acc:#C5C9CE;--metal:#D5D8DC;--sheen:.62}
+.m0{--body:#E8E0CF;--trim:#2A2A2C;--metal:#BDB5A4}
+footer{border-top:1px solid var(--line);padding-top:24px;color:var(--mute);font-size:13px;max-width:52em}
+@media (max-width:960px){.det{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){main{padding:48px 18px 64px}.grid2,.mat3{grid-template-columns:1fr}.sw-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient>
+<linearGradient id="sn" x1="0" y1="0" x2="1" y2=".25"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".28" stop-color="#fff" stop-opacity=".85"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".72" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<radialGradient id="lamp" cx=".35" cy=".5" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff2cf"/><stop offset="1" stop-color="#e9d9ad"/></radialGradient>
+<radialGradient id="tyre" cx=".5" cy=".5" r=".5"><stop offset=".6" stop-color="#2a2a2c"/><stop offset="1" stop-color="#121213"/></radialGradient>
+<pattern id="stitch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0H7" stroke="#fff" stroke-opacity=".12" stroke-width="1"/><path d="M0 3.5H7" stroke="#000" stroke-opacity=".25" stroke-width="1"/></pattern>
+<pattern id="grain" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".8" fill="#fff" fill-opacity=".22"/><circle cx="4" cy="4" r=".8" fill="#000" fill-opacity=".35"/></pattern>
+<filter id="bl" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+<path id="rb" d="M80,262 C70,200 118,168 196,168 L272,170 C286,200 284,236 272,264 Z"/>
+<path id="fb" d="M398,266 C404,206 420,138 440,84 L466,90 C456,146 452,214 466,266 Z"/>
+<path id="ff" d="M436,262 C446,240 516,238 528,262 L520,268 C510,250 450,250 444,268 Z"/>
+<path id="st" d="M84,164 C92,146 176,138 268,148 L272,168 C200,162 128,164 88,178 Z"/>
+<symbol id="sc" viewBox="0 0 600 380">
+<ellipse cx="300" cy="346" rx="255" ry="13" fill="#000" opacity=".3" filter="url(#bl)"/>
+<g><circle cx="130" cy="296" r="46" fill="url(#tyre)"/><circle cx="130" cy="296" r="31" fill="var(--metal)"/><circle cx="130" cy="296" r="25" fill="#2a2b2e"/><circle cx="130" cy="296" r="7" fill="var(--metal)"/></g>
+<g><circle cx="480" cy="296" r="46" fill="url(#tyre)"/><circle cx="480" cy="296" r="31" fill="var(--metal)"/><circle cx="480" cy="296" r="25" fill="#2a2b2e"/><circle cx="480" cy="296" r="7" fill="var(--metal)"/></g>
+<line x1="480" y1="296" x2="468" y2="140" stroke="var(--metal)" stroke-width="9" stroke-linecap="round"/>
+<rect x="240" y="262" width="180" height="24" rx="12" fill="var(--trim)"/>
+<rect x="256" y="266" width="148" height="7" rx="3.5" fill="#111"/><rect x="256" y="266" width="148" height="7" rx="3.5" fill="url(#grain)"/>
+<use href="#rb" fill="var(--body)"/><use href="#rb" fill="url(#sh)"/><use href="#rb" fill="url(#sn)" style="opacity:var(--sheen)"/>
+<path d="M92,226 C96,202 130,192 196,192 L276,194 L278,202 L196,200 C140,200 106,208 102,232 Z" fill="var(--acc)"/>
+<rect x="84" y="258" width="190" height="10" rx="5" fill="var(--trim)"/><rect x="84" y="258" width="190" height="10" rx="5" fill="url(#grain)"/>
+<rect x="70" y="190" width="8" height="24" rx="4" fill="#c4473a"/>
+<use href="#st" fill="var(--seat)" stroke="var(--acc)" stroke-width="1.6"/><use href="#st" fill="url(#stitch)"/><use href="#st" fill="url(#sh)" opacity=".5"/>
+<use href="#fb" fill="var(--body)"/><use href="#fb" fill="url(#sh)"/><use href="#fb" fill="url(#sn)" style="opacity:var(--sheen)"/>
+<path d="M410,238 C412,216 418,190 424,166 L430,168 C424,192 418,218 417,240 Z" fill="var(--acc)" opacity=".9"/>
+<use href="#ff" fill="var(--body)"/><use href="#ff" fill="url(#sh)"/><use href="#ff" fill="url(#sn)" style="opacity:var(--sheen)"/>
+<rect x="450" y="68" width="11" height="24" fill="var(--metal)"/>
+<rect x="424" y="58" width="84" height="14" rx="7" fill="var(--trim)"/><rect x="424" y="58" width="84" height="14" rx="7" fill="url(#grain)"/>
+<path d="M462,98 C484,93 506,99 510,112 C502,121 480,123 462,119 Z" fill="var(--metal)"/>
+<path d="M465,101 C484,97 502,102 505,112 C498,118 480,119 465,116 Z" fill="url(#lamp)"/>
+<rect x="472" y="107" width="30" height="2.5" rx="1.2" fill="#fff"/>
+</symbol>
+</defs>
+</svg>
+
+<main>
+<header>
+<h1>Urban electric scooter: colour, material and finish exploration</h1>
+<p class="lede">One scooter form, four colourways. Geometry, camera angle and lighting stay fixed, so only colour, material and finish change from one variant to the next.</p>
+<p class="lede" style="font-size:13px">Independent concept study. Not an official product and not affiliated with any manufacturer.</p>
+</header>
+
+<section>
+<div class="sec-head"><h2>Four colourways</h2><p>Each variant pairs a body colour with a trim colour and a hardware finish. Swatches show the three material treatments used in that variant.</p></div>
+<div class="grid2">
+
+<article class="card m1"><div class="stage"><svg viewBox="0 0 600 380" role="img" aria-label="Scooter in warm ivory with charcoal trim"><use href="#sc" width="600" height="380"/></svg></div>
+<div class="info"><div><h3>Ivory and charcoal</h3><p class="desc">Soft ivory panels against charcoal trim. Champagne hardware keeps the contrast gentle.</p></div>
+<div class="sw-row"><figure><div class="sw matte"></div><figcaption><b>Matte panel</b>Warm ivory #E8E0CF</figcaption></figure><figure><div class="sw satin"></div><figcaption><b>Satin hardware</b>Champagne #BDB5A4</figcaption></figure><figure><div class="sw tex"></div><figcaption><b>Textured trim</b>Charcoal #2A2A2C</figcaption></figure><figure><div class="sw acc"></div><figcaption><b>Accent</b>Taupe #8D8573</figcaption></figure></div></div></article>
+
+<article class="card m2"><div class="stage"><svg viewBox="0 0 600 380" role="img" aria-label="Scooter in muted sage green with dark grey trim"><use href="#sc" width="600" height="380"/></svg></div>
+<div class="info"><div><h3>Sage and dark grey</h3><p class="desc">A muted, slightly grey green on matte panels, grounded by dark grey trim and pale sage detailing.</p></div>
+<div class="sw-row"><figure><div class="sw matte"></div><figcaption><b>Matte panel</b>Muted sage #9CAB95</figcaption></figure><figure><div class="sw satin"></div><figcaption><b>Satin hardware</b>Sage grey #A7AEA6</figcaption></figure><figure><div class="sw tex"></div><figcaption><b>Textured trim</b>Dark grey #34373A</figcaption></figure><figure><div class="sw acc"></div><figcaption><b>Accent</b>Pale sage #D0D8CA</figcaption></figure></div></div></article>
+
+<article class="card m3"><div class="stage"><svg viewBox="0 0 600 380" role="img" aria-label="Scooter in warm cream with terracotta accents"><use href="#sc" width="600" height="380"/></svg></div>
+<div class="info"><div><h3>Terracotta and warm cream</h3><p class="desc">Cream panels carry terracotta only where the eye should land: the body stripe, column inlay and seat piping.</p></div>
+<div class="sw-row"><figure><div class="sw matte"></div><figcaption><b>Matte panel</b>Warm cream #F0E4D0</figcaption></figure><figure><div class="sw satin"></div><figcaption><b>Satin hardware</b>Sand bronze #B7A18C</figcaption></figure><figure><div class="sw tex"></div><figcaption><b>Textured trim</b>Umber #3A2E29</figcaption></figure><figure><div class="sw acc"></div><figcaption><b>Accent</b>Terracotta #B5573A</figcaption></figure></div></div></article>
+
+<article class="card m4"><div class="stage"><svg viewBox="0 0 600 380" role="img" aria-label="Scooter in graphite grey with silver details"><use href="#sc" width="600" height="380"/></svg></div>
+<div class="info"><div><h3>Graphite and silver</h3><p class="desc">Satin metallic graphite panels catch broad highlights. Silver details and near-black trim keep it crisp.</p></div>
+<div class="sw-row"><figure><div class="sw satin" style="--metal:#50545A"></div><figcaption><b>Satin metallic panel</b>Graphite #50545A</figcaption></figure><figure><div class="sw satin"></div><figcaption><b>Satin hardware</b>Silver #D5D8DC</figcaption></figure><figure><div class="sw tex"></div><figcaption><b>Textured trim</b>Near black #1D1E20</figcaption></figure><figure><div class="sw acc"></div><figcaption><b>Accent</b>Light silver #C5C9CE</figcaption></figure></div></div></article>
+
+</div>
+</section>
+
+<section>
+<div class="sec-head"><h2>Material system</h2><p>Three finishes are reused across all colourways, so the range reads as one family.</p></div>
+<div class="mat3 m0">
+<div class="card"><div class="sw matte"></div><div><h3>Matte painted panels</h3><p class="desc" style="color:var(--mute)">Low-gloss, even surface with fine grain. Used on body panels, fender and leg shield.</p></div></div>
+<div class="card"><div class="sw satin"></div><div><h3>Satin metallic</h3><p class="desc" style="color:var(--mute)">Soft, directional highlight with no mirror gloss. Used on hardware, wheel centres and the graphite body.</p></div></div>
+<div class="card"><div class="sw tex"></div><div><h3>Textured dark trim</h3><p class="desc" style="color:var(--mute)">Fine cross-hatch grain that absorbs light. Used on the deck, skirt and handlebar.</p></div></div>
+</div>
+</section>
+
+<section>
+<div class="sec-head"><h2>Detail studies</h2><p>Close crops from the same model, each shown in the variant where the detail reads best.</p></div>
+<div class="det">
+<article class="card m1"><div class="stage"><svg viewBox="70 130 240 180" role="img" aria-label="Close-up of ivory rear body panel"><use href="#sc" width="600" height="380"/></svg></div><div class="info"><h3>Body panel</h3><p>Ivory matte paint over the rear body, with a taupe accent line.</p></div></article>
+<article class="card m2"><div class="stage"><svg viewBox="380 40 160 120" role="img" aria-label="Close-up of front lighting in sage"><use href="#sc" width="600" height="380"/></svg></div><div class="info"><h3>Front lighting</h3><p>Slim lamp with a satin metal bezel and a thin daytime strip.</p></div></article>
+<article class="card m3"><div class="stage"><svg viewBox="70 110 240 180" role="img" aria-label="Close-up of seat with terracotta piping"><use href="#sc" width="600" height="380"/></svg></div><div class="info"><h3>Seat material</h3><p>Umber seat with a fine stitched texture and terracotta piping.</p></div></article>
+<article class="card m4"><div class="stage"><svg viewBox="300 190 200 150" role="img" aria-label="Close-up of finish transitions in graphite"><use href="#sc" width="600" height="380"/></svg></div><div class="info"><h3>Finish transitions</h3><p>Satin graphite meets textured deck trim and silver fork hardware.</p></div></article>
+</div>
+</section>
+
+<footer>Visualisation method: vector-rendered studio views built from one shared model. Camera, lighting and shadow are identical across variants; only colour, material and finish values change. Colour values are digital approximations.</footer>
+</main>
+</body>
+</html>

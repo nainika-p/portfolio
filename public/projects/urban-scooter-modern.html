@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Urban Scooter — Design Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E8E4DB;--card:#F1EEE6;--ink:#242321;--mute:#736E64;--line:#D3CDC0;--s1:#F5F2EA;--s2:#D9D3C6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#181715;--card:#211F1C;--ink:#ECE8DF;--mute:#9F998C;--line:#36332E}}
+:root[data-theme="dark"]{--bg:#181715;--card:#211F1C;--ink:#ECE8DF;--mute:#9F998C;--line:#36332E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14.5px/1.5 Inter,system-ui,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:72px 28px 88px}
+header{margin-bottom:48px;display:grid;gap:12px}
+h1{font:300 clamp(34px,5vw,60px)/1.04 Newsreader,Georgia,serif;letter-spacing:-.015em;margin:0}
+h2{font:400 26px/1.15 Newsreader,Georgia,serif;margin:0}
+h3{font:500 15px/1.3 Inter,sans-serif;margin:0}
+p{margin:0}.mute{color:var(--mute)}
+.stage{background:radial-gradient(110% 80% at 50% 28%,var(--s1),var(--s2));}
+.stage svg{display:block;width:100%;height:100%}
+.card{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.hero{display:grid;grid-template-columns:1.75fr 1fr;margin-bottom:28px}
+.hero .stage{aspect-ratio:1800/1560;border-right:1px solid var(--line)}
+.side{padding:34px 30px;display:flex;flex-direction:column;gap:26px;justify-content:space-between}
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.notes li{display:flex;gap:12px;align-items:baseline;color:var(--mute)}
+.notes i{flex:none;width:9px;height:9px;border-radius:50%;transform:translateY(0)}
+.pal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pal div{height:70px;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+.pal span{display:block;font-size:12px;line-height:1.35;color:var(--mute);margin-top:6px}
+.pal b{display:block;font-weight:500;color:var(--ink)}
+.vars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.vars .stage{aspect-ratio:1800/1560;border-bottom:1px solid var(--line)}
+.vinfo{padding:20px 22px 24px;display:grid;gap:8px}
+.dots{display:flex;gap:6px;margin-top:4px}.dots i{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.row{display:flex;justify-content:space-between;align-items:baseline;margin:44px 0 18px;gap:20px}
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;max-width:56em}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.hero .stage{border-right:0;border-bottom:1px solid var(--line)}.vars{grid-template-columns:1fr}}
+@media (max-width:600px){main{padding:48px 16px 64px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient>
+<filter id="sb" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="34"/></filter>
+<filter id="st" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="11"/></filter>
+<filter id="lg" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+</defs></svg>
+
+<main>
+<header>
+<h1>Urban Scooter — Design Exploration</h1>
+<p class="mute" style="max-width:46em">A main concept and three variations of one urban electric scooter, exploring body shape, front lighting and proportion in a restrained palette. Independent concept study, not affiliated with any manufacturer.</p>
+</header>
+
+<article class="card hero">
+<div class="stage" id="s0"></div>
+<div class="side">
+<div style="display:grid;gap:10px"><h2>Main concept</h2><p class="mute">Balanced proportions, matte ivory panels and a calm, uncluttered silhouette.</p></div>
+<ul class="notes"><li><i style="background:#E6DEC9;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)"></i>Matte ivory body panels</li><li><i style="background:#27272A"></i>Charcoal deck, seat and handlebar</li><li><i style="background:#B5694D"></i>Terracotta accent band</li><li><i style="background:#FFF3D4;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)"></i>Slim horizontal lamp</li></ul>
+<div class="pal"><div style="background:#E6DEC9"></div><div style="background:#27272A"></div><div style="background:#B5694D"></div>
+<span><b>Warm ivory</b>#E6DEC9</span><span><b>Charcoal black</b>#27272A</span><span><b>Muted terracotta</b>#B5694D</span></div>
+</div>
+</article>
+
+<div class="row"><h2>Variations</h2><p class="mute">Same camera and scale for each, so proportions compare directly.</p></div>
+<div class="vars">
+<article class="card"><div class="stage" id="s1"></div><div class="vinfo"><h3>Variation 1: Compact</h3><p class="mute">Shorter wheelbase, smaller wheels and a round lamp. Charcoal body with an ivory seat.</p><div class="dots"><i style="background:#2A2A2D"></i><i style="background:#E3DAC6"></i><i style="background:#B5694D"></i></div></div></article>
+<article class="card"><div class="stage" id="s2"></div><div class="vinfo"><h3>Variation 2: Long deck</h3><p class="mute">Longer deck, lower seat and a crisper, more angular body. Terracotta shield with twin vertical lamps.</p><div class="dots"><i style="background:#E6DEC9"></i><i style="background:#26262A"></i><i style="background:#B5694D"></i></div></div></article>
+<article class="card"><div class="stage" id="s3"></div><div class="vinfo"><h3>Variation 3: Tall tail</h3><p class="mute">Raised tail and seat on a short deck. Charcoal shield, terracotta seat and a slim full-width lamp.</p><div class="dots"><i style="background:#E6DEC9"></i><i style="background:#2A2A2D"></i><i style="background:#B5694D"></i></div></div></article>
+</div>
+
+<footer>Rendered from a parametric 3D model projected to vector, with matte shading and soft studio light. Colours are digital approximations. Concept exploration only, with no brand marks.</footer>
+</main>
+
+<script>
+const D=Math.PI/180,hx=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const rgb=(h,k)=>'rgb('+hx(h).map(v=>Math.max(0,Math.min(255,Math.round(v*k)))).join()+')';
+const ch=(p,n)=>{for(let i=0;i<n;i++){const q=[];for(let j=0;j<p.length;j++){const a=p[j],b=p[(j+1)%p.length];q.push([.75*a[0]+.25*b[0],.75*a[1]+.25*b[1]],[.25*a[0]+.75*b[0],.25*a[1]+.75*b[1]])}p=q}return p};
+const circ=(cx,cz,r,n=36)=>Array.from({length:n},(_,i)=>[cx+r*Math.cos(i/n*6.2832),cz+r*Math.sin(i/n*6.2832)]);
+function render(o){
+const a=o.az*D,e=o.el*D,ca=Math.cos(a),sa=Math.sin(a),ce=Math.cos(e),se=Math.sin(e);
+let X0=1e9,X1=-1e9,Y1=-1e9,out='';
+const P=(x,y,z)=>{const xr=x*ca-y*sa,yr=x*sa+y*ca,sy=-(z*ce+yr*se);X0=Math.min(X0,xr);X1=Math.max(X1,xr);Y1=Math.max(Y1,sy);return[xr,sy,yr*ce-z*se]};
+const NN=n=>{const xr=n[0]*ca-n[1]*sa,yr=n[0]*sa+n[1]*ca;return[xr,yr*ce-n[2]*se,yr*se+n[2]*ce]};
+const poly=(p,fill,x='')=>`<polygon points="${p.map(v=>v[0].toFixed(1)+','+v[1].toFixed(1)).join(' ')}" fill="${fill}" ${x}/>`;
+const f=(v,x,z)=>typeof v=='function'?v(x,z):v;
+function ext(prof,lo,hi,base,s=2){
+ if(s)prof=ch(prof,s);
+ let ar=0;prof.forEach((p,i)=>{const q=prof[(i+1)%prof.length];ar+=p[0]*q[1]-q[0]*p[1]});const sg=ar>0?1:-1,n=prof.length,F=[];
+ for(let i=0;i<n;i++){const[a1,b1]=prof[i],[a2,b2]=prof[(i+1)%n],dx=a2-a1,dz=b2-b1,l=Math.hypot(dx,dz)||1;
+  F.push({p:[[a1,f(lo,a1,b1),b1],[a2,f(lo,a2,b2),b2],[a2,f(hi,a2,b2),b2],[a1,f(hi,a1,b1),b1]],n:[sg*dz/l,0,-sg*dx/l]})}
+ F.push({p:prof.map(([x,z])=>[x,f(hi,x,z),z]),n:[0,1,0],c:1});
+ F.push({p:prof.map(([x,z])=>[x,f(lo,x,z),z]),n:[0,-1,0],c:1});
+ const R=[];
+ F.forEach(q=>{const m=NN(q.n);if(m[1]>=0)return;q.pp=q.p.map(v=>P(...v));q.d=q.pp.reduce((s,v)=>s+v[2],0)/q.pp.length;q.k=.42+.72*Math.max(0,-.45*m[0]-.55*m[1]+.7*m[2]);R.push(q)});
+ R.sort((u,v)=>v.d-u.d).forEach(q=>{const c=rgb(base,q.k);out+=poly(q.pp,c,`stroke="${c}" stroke-width=".9" stroke-linejoin="round"`);if(q.c)out+=poly(q.pp,'url(#cg)')});
+}
+const R=o.R,ra=-o.wb/2,q=o.wb/2,z0=o.dz+10,z1=o.sh;
+const wheel=cx=>{ext(circ(cx,R,R),-48,48,'#222225',0);ext(circ(cx,R,R*.76),-56,56,'#8F8B84',0);ext(circ(cx,R,R*.6),-58,58,'#2B2B2E',0);ext(circ(cx,R,R*.2),-62,62,'#A39F97',0)};
+wheel(ra);
+ext([[-o.dl,o.dz],[o.df,o.dz],[o.df,o.dz+o.dt],[-o.dl,o.dz+o.dt]],-o.dw,o.dw,o.trim,2);
+ext([[-o.dl+70,o.dz+o.dt],[o.df-90,o.dz+o.dt],[o.df-90,o.dz+o.dt+9],[-o.dl+70,o.dz+o.dt+9]],-o.dw+38,o.dw-38,'#1B1B1E',0);
+const x0=ra-190,x1=-o.dl+70,bhw=x=>o.bw-.2*Math.max(0,x0+380-x);
+ext([[x0,o.bb+40],[x0+10,o.bt-190],[x0+90,o.bt-80],[x0+300,o.bt-14],[x1-200,o.bt],[x1,o.bt-60],[x1+30,o.bb+110],[x1,o.bb],[x0+250,o.bb-8],[x0+60,o.bb]],x=>-bhw(x),bhw,o.body,o.s);
+ext([[x0+130,o.bt-150],[x1-60,o.bt-125],[x1-60,o.bt-105],[x0+130,o.bt-130]],bhw,x=>bhw(x)+7,o.acc,0);
+const xs0=x0+100,xs1=x1-130,zb=o.bt-8,shw=x=>o.sw-.1*Math.max(0,x-xs0-150);
+ext([[xs0,zb],[xs0+10,zb+o.st*.75],[xs0+160,zb+o.st],[xs1-110,zb+o.st*.92],[xs1,zb+o.st*.55],[xs1-6,zb]],x=>-shw(x),shw,o.seat,o.s);
+wheel(q);
+ext([[q-20,R],[q+20,R],[q-55,R+330],[q-100,R+330]],58,86,'#8F8B84',0);
+const arc=[];for(let t=18;t<=172;t+=7)arc.push([q+(R+40)*Math.cos(t*D),R+(R+40)*Math.sin(t*D)]);for(let t=172;t>=18;t-=7)arc.push([q+(R+22)*Math.cos(t*D),R+(R+22)*Math.sin(t*D)]);
+ext(arc,-82,82,o.fend,0);
+ext([[q-90,z0],[q-60,z0+220],[q-110,z0+520],[q-190,z1-120],[q-230,z1],[q-330,z1],[q-340,z1-260],[q-320,z0+200],[q-350,z0]],(x,z)=>-(o.shw-(z-z0)*.12),(x,z)=>o.shw-(z-z0)*.12,o.shield,o.s);
+ext([[q-340,z1-30],[q-120,z1-30],[q-96,z1+25],[q-140,z1+135],[q-300,z1+150],[q-340,z1+90]],-108,108,o.trim,1);
+const rc=(a,b,c,d)=>[[a,c],[b,c],[b,d],[a,d]];
+const L={bar:[rc(-80,80,-14,14)],round:[circ(0,0,44,24)],twin:[rc(-62,-40,-48,48),rc(40,62,-48,48)],wide:[rc(-98,98,-7,7)]}[o.lamp];
+const pl=q-106,zc=z1+30;
+const lp=(s,k)=>{const cy=s.reduce((m,v)=>m+v[0],0)/s.length,cz=s.reduce((m,v)=>m+v[1],0)/s.length;return s.map(([y,z])=>P(pl,cy+(y-cy)*k,zc+cz+(z-cz)*k))};
+L.forEach(s=>{out+=poly(lp(s,1.25),'#19191B')});
+out+='<g filter="url(#lg)" opacity=".75">'+L.map(s=>poly(lp(s,1),'#FFE9B0')).join('')+'</g>'+L.map(s=>poly(lp(s,1),'#FFF6DD')).join('');
+ext(circ(q-255,z1+175,24,16),-330,330,o.trim,0);
+ext(circ(q-255,z1+175,31,16),235,340,'#1D1D20',0);ext(circ(q-255,z1+175,31,16),-340,-235,'#1D1D20',0);
+const fp=(xa,xb,w)=>[[xa,-w],[xb,-w],[xb,w],[xa,w]].map(([x,y])=>P(x,y,0));
+const sh=`<g filter="url(#sb)" opacity=".3">${poly(fp(ra-R,q+R+60,o.dw+70),'#2A2016')}</g><g filter="url(#st)" opacity=".42">${poly(fp(ra-R+60,q+R-20,o.dw-30),'#241A12')}</g>`;
+const W=1800,H=1560,cx=(X0+X1)/2;
+return `<svg viewBox="${(cx-W/2).toFixed(0)} ${(Y1-H*.93).toFixed(0)} ${W} ${H}" role="img" aria-label="${o.name}">${sh}${out}</svg>`}
+const B={az:-125,el:11,wb:1300,R:205,dz:250,dt:62,dl:170,df:470,dw:205,bb:265,bt:640,bw:180,st:75,sw:150,sh:980,shw:185,lamp:'bar',s:2,body:'#E6DEC9',shield:'#E6DEC9',fend:'#E6DEC9',trim:'#27272A',seat:'#2B2825',acc:'#B5694D'};
+const V=[
+{name:'Main concept, balanced proportions, ivory and charcoal'},
+{name:'Variation 1, compact',wb:1150,R:190,dz:235,dl:120,df:400,bt:610,bb:250,bw:190,st:85,sh:1010,shw:170,lamp:'round',s:3,body:'#2A2A2D',shield:'#2A2A2D',fend:'#2A2A2D',trim:'#1E1E21',seat:'#E3DAC6'},
+{name:'Variation 2, long deck',wb:1450,dz:230,dt:55,dl:330,df:520,bt:585,bb:250,bw:170,st:60,sh:940,shw:175,lamp:'twin',s:1,shield:'#B5694D',fend:'#B5694D',trim:'#26262A',seat:'#26262A',acc:'#26262A'},
+{name:'Variation 3, tall tail',R:195,dz:260,dl:110,df:420,bt:720,bb:290,bw:165,st:90,sh:1050,shw:195,lamp:'wide',shield:'#2A2A2D',fend:'#2A2A2D',trim:'#2A2A2D',seat:'#B5694D'}
+];
+V.forEach((v,i)=>{const el=document.getElementById('s'+i);try{el.innerHTML=render(Object.assign({},B,v))}catch(err){el.textContent='Render unavailable'}});
+</script>
+</body>
+</html>

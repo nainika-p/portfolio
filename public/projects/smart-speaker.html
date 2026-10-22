@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Speaker — Product Design Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E9E3D8;--card:#F3EEE4;--ink:#26231F;--mute:#756E62;--line:#D5CDBF;--s1:#F6F1E7;--s2:#DCD3C3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1815;--card:#22201C;--ink:#EEE8DC;--mute:#A0988A;--line:#37332D}}
+:root[data-theme="dark"]{--bg:#1A1815;--card:#22201C;--ink:#EEE8DC;--mute:#A0988A;--line:#37332D}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14.5px/1.5 Inter,system-ui,sans-serif}
+main{max-width:1160px;margin:0 auto;padding:72px 28px 88px}
+header{margin-bottom:52px;display:grid;gap:12px}
+h1{font:400 clamp(34px,5vw,58px)/1.05 "Cormorant Garamond",Georgia,serif;letter-spacing:-.01em;margin:0}
+.sub{color:var(--mute);max-width:44em;margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.stage{aspect-ratio:400/360;background:radial-gradient(110% 85% at 50% 30%,var(--s1),var(--s2))}
+.stage svg{display:block;width:100%;height:100%}
+.info{padding:22px 26px 26px;display:grid;gap:16px}
+h2{font:500 25px/1.15 "Cormorant Garamond",Georgia,serif;margin:0}
+.info p{margin:4px 0 0;color:var(--mute)}
+.rows{display:grid;gap:14px}
+.chips,.mats{display:grid;gap:10px}
+.chips{grid-template-columns:repeat(4,1fr)}
+.mats{grid-template-columns:repeat(3,1fr)}
+.chip{height:26px;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.sw{height:50px;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+figure{margin:0}
+figcaption{font-size:12px;line-height:1.35;color:var(--mute);margin-top:6px}
+.weave{background-color:var(--w);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.18) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.14) 0 1px,transparent 1px 4px)}
+.matte{background-color:var(--w);background-image:radial-gradient(rgba(0,0,0,.08) 1px,transparent 1.3px);background-size:4px 4px}
+.perf{background-color:var(--w);background-image:radial-gradient(rgba(0,0,0,.6) 1.3px,transparent 1.6px);background-size:7px 7px}
+.brushed{background:repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 1px,rgba(0,0,0,.05) 1px 3px),linear-gradient(100deg,#9E9A92,#D4D0C8 35%,#A9A59D 60%,#CBC7BF)}
+.c1{--w:#C8B9A3}.c2{--w:#2B2B2D}.c3{--w:#EDE4D3}.c4{--w:#5E5A55}
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;max-width:52em}
+@media (max-width:760px){main{padding:48px 18px 64px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<filter id="bl" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="gl" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="2.5"/></filter>
+<pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5H4" stroke="#fff" stroke-opacity=".22"/><path d="M.5 0V4" stroke="#000" stroke-opacity=".16"/></pattern>
+<pattern id="perf" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1.1" fill="#000" fill-opacity=".7"/></pattern>
+<pattern id="perfl" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#5a3a2c" fill-opacity=".55"/></pattern>
+<pattern id="brush" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 .5H3" stroke="#fff" stroke-opacity=".28"/><path d="M0 2H3" stroke="#000" stroke-opacity=".06"/></pattern>
+<linearGradient id="cyl" x1="0" x2="1"><stop offset="0" stop-color="#8E7F6A"/><stop offset=".22" stop-color="#CDBFA9"/><stop offset=".5" stop-color="#D6C9B4"/><stop offset=".8" stop-color="#A89880"/><stop offset="1" stop-color="#6F6250"/></linearGradient>
+<linearGradient id="cylsh" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".3"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+<radialGradient id="cap" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#F7F1E6"/><stop offset="1" stop-color="#DCD2C0"/></radialGradient>
+<linearGradient id="fT" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#48484B"/><stop offset="1" stop-color="#303033"/></linearGradient>
+<linearGradient id="fL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F2F32"/><stop offset="1" stop-color="#232325"/></linearGradient>
+<linearGradient id="fR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232325"/><stop offset="1" stop-color="#161618"/></linearGradient>
+<radialGradient id="ivF" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#F8F2E6"/><stop offset=".7" stop-color="#EADFCB"/><stop offset="1" stop-color="#D2C4AC"/></radialGradient>
+<linearGradient id="ivB" x1="0" x2="1"><stop offset="0" stop-color="#CBBDA5"/><stop offset="1" stop-color="#A89A82"/></linearGradient>
+<linearGradient id="tc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C9684A"/><stop offset="1" stop-color="#9E4A31"/></linearGradient>
+<clipPath id="oval"><ellipse cx="196" cy="178" rx="88" ry="128"/></clipPath>
+<linearGradient id="mF" x1="0" x2="1"><stop offset="0" stop-color="#A9A59D"/><stop offset=".3" stop-color="#D8D4CC"/><stop offset=".55" stop-color="#B4B0A8"/><stop offset=".8" stop-color="#CFCBC3"/><stop offset="1" stop-color="#A29E96"/></linearGradient>
+<linearGradient id="mS" x1="0" x2="1"><stop offset="0" stop-color="#8C8880"/><stop offset="1" stop-color="#6D6A63"/></linearGradient>
+<linearGradient id="mT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6E2DA"/><stop offset="1" stop-color="#C4C0B8"/></linearGradient>
+</defs>
+</svg>
+
+<main>
+<header>
+<h1>Smart Speaker — Product Design Exploration</h1>
+<p class="sub">Four conceptual directions for a speaker in a contemporary home. An early-stage design exploration, not a completed project or an existing product.</p>
+</header>
+
+<div class="grid">
+
+<article class="card c1">
+<div class="stage"><svg viewBox="0 0 400 360" role="img" aria-label="Rounded cylindrical speaker in woven fabric, three-quarter view">
+<ellipse cx="202" cy="322" rx="112" ry="13" fill="#2a2018" opacity=".32" filter="url(#bl)"/>
+<ellipse cx="200" cy="306" rx="72" ry="19" fill="#3A342E"/>
+<path d="M120,110 L120,298 A80,22 0 0 0 280,298 L280,110 Z" fill="url(#cyl)"/>
+<path d="M120,110 L120,298 A80,22 0 0 0 280,298 L280,110 Z" fill="url(#weave)"/>
+<path d="M120,110 L120,298 A80,22 0 0 0 280,298 L280,110 Z" fill="url(#cylsh)"/>
+<path d="M124,291 A76,21 0 0 0 276,291" fill="none" stroke="#FFEFC8" stroke-width="5" opacity=".7" filter="url(#gl)"/>
+<path d="M124,291 A76,21 0 0 0 276,291" fill="none" stroke="#FFF6E0" stroke-width="1.6"/>
+<ellipse cx="200" cy="110" rx="80" ry="22" fill="url(#cap)"/>
+<ellipse cx="200" cy="110" rx="80" ry="22" fill="none" stroke="#000" stroke-opacity=".14"/>
+<ellipse cx="200" cy="110" rx="52" ry="13.5" fill="#E3D9C7" stroke="#000" stroke-opacity=".08"/>
+<circle cx="166" cy="110" r="2.8" fill="#8A7B68"/><path d="M158 110h16" stroke="#8A7B68" stroke-width="1.4" transform="translate(0,0)" opacity="0"/>
+<path d="M195,106 L207,110 L195,114 Z" fill="#8A7B68"/>
+<circle cx="234" cy="110" r="2.8" fill="#8A7B68"/><path d="M231 110h6M234 107v6" stroke="#E3D9C7" stroke-width="1"/>
+<circle cx="200" cy="119.5" r="2" fill="#F2C879"/><circle cx="200" cy="119.5" r="5" fill="#F2C879" opacity=".35" filter="url(#gl)"/>
+</svg></div>
+<div class="info"><div><h2>Soft cylinder</h2><p>Rounded, tactile and calm. Woven fabric wraps a soft-touch cap, with a thin glow at the base. Height about 1.2 × width.</p></div>
+<div class="rows"><div class="chips"><div class="chip" style="background:#C8B9A3"></div><div class="chip" style="background:#EFE8DC"></div><div class="chip" style="background:#8E7F6D"></div><div class="chip" style="background:#3A342E"></div></div>
+<div class="mats"><figure><div class="sw weave"></div><figcaption>Woven fabric<br>#C8B9A3</figcaption></figure><figure><div class="sw matte" style="--w:#EFE8DC"></div><figcaption>Soft-touch cap<br>#EFE8DC</figcaption></figure><figure><div class="sw matte" style="--w:#3A342E"></div><figcaption>Dark base<br>#3A342E</figcaption></figure></div></div></div>
+</article>
+
+<article class="card c2">
+<div class="stage"><svg viewBox="0 0 400 360" role="img" aria-label="Compact geometric speaker in matte charcoal, three-quarter view">
+<ellipse cx="200" cy="318" rx="118" ry="13" fill="#1a1612" opacity=".4" filter="url(#bl)"/>
+<g transform="translate(0,36)">
+<path d="M120,112 L200,144 L200,264 L120,232 Z" fill="url(#fL)"/>
+<path d="M200,144 L280,112 L280,232 L200,264 Z" fill="url(#fR)"/>
+<path d="M200,80 L280,112 L200,144 L120,112 Z" fill="url(#fT)"/>
+<g transform="matrix(1,.4,0,1,120,112)"><rect x="0" y="0" width="80" height="120" fill="#fff" opacity=".03"/><rect x="30" y="98" width="22" height="3.2" rx="1.6" fill="#F0B35A"/><rect x="30" y="98" width="22" height="3.2" rx="1.6" fill="#F0B35A" opacity=".6" filter="url(#gl)"/></g>
+<g transform="matrix(1,-.4,0,1,200,144)"><rect x="9" y="14" width="62" height="92" rx="8" fill="#101012"/><rect x="9" y="14" width="62" height="92" rx="8" fill="url(#perf)"/></g>
+<g transform="matrix(1,.4,-1,.4,200,80)"><circle cx="40" cy="40" r="21" fill="#2D2D30" stroke="#5E5F63" stroke-width="1.4"/><circle cx="40" cy="40" r="14" fill="none" stroke="#000" stroke-opacity=".35"/><circle cx="40" cy="40" r="2.6" fill="#8A8B90"/><circle cx="66" cy="14" r="3" fill="#3C3C3F" stroke="#5E5F63" stroke-width=".8"/></g>
+<path d="M120,112 L200,80 L280,112 M200,144 L200,264" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.2"/>
+<path d="M120,112 L200,144 L280,112" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="1.2"/>
+</g>
+</svg></div>
+<div class="info"><div><h2>Compact facet</h2><p>A faceted block in matte charcoal with a precise dial on top and a micro-perforated grille. Height about 1.4 × edge width.</p></div>
+<div class="rows"><div class="chips"><div class="chip" style="background:#2B2B2D"></div><div class="chip" style="background:#3A3A3C"></div><div class="chip" style="background:#5B5C60"></div><div class="chip" style="background:#F0B35A"></div></div>
+<div class="mats"><figure><div class="sw matte" style="--w:#2B2B2D"></div><figcaption>Matte charcoal<br>#2B2B2D</figcaption></figure><figure><div class="sw perf" style="--w:#17171A"></div><figcaption>Perforated grille<br>#17171A</figcaption></figure><figure><div class="sw matte" style="--w:#F0B35A"></div><figcaption>Amber indicator<br>#F0B35A</figcaption></figure></div></div></div>
+</article>
+
+<article class="card c3">
+<div class="stage"><svg viewBox="0 0 400 360" role="img" aria-label="Sculptural oval speaker in ivory and terracotta, three-quarter view">
+<ellipse cx="206" cy="326" rx="104" ry="12" fill="#2a1d14" opacity=".32" filter="url(#bl)"/>
+<path d="M164,304 L238,304 L244,322 L158,322 Z" fill="#5A3F33"/>
+<ellipse cx="216" cy="184" rx="88" ry="128" fill="url(#ivB)"/>
+<ellipse cx="196" cy="178" rx="88" ry="128" fill="url(#ivF)"/>
+<g clip-path="url(#oval)"><path d="M100,236 C150,262 250,262 296,232 L296,284 C240,300 140,300 100,284 Z" fill="url(#tc)"/><path d="M100,236 C150,262 250,262 296,232 L296,284 C240,300 140,300 100,284 Z" fill="url(#weave)" opacity=".7"/></g>
+<ellipse cx="196" cy="140" rx="46" ry="34" fill="#E2D5BE"/><ellipse cx="196" cy="140" rx="46" ry="34" fill="url(#perfl)"/>
+<ellipse cx="196" cy="178" rx="88" ry="128" fill="none" stroke="#000" stroke-opacity=".1"/>
+<rect x="170" y="74" width="52" height="3" rx="1.5" fill="#E6A15C"/><rect x="170" y="74" width="52" height="3" rx="1.5" fill="#E6A15C" opacity=".7" filter="url(#gl)"/>
+<circle cx="178" cy="206" r="3" fill="#A18F76"/><circle cx="196" cy="206" r="3" fill="#A18F76"/><circle cx="214" cy="206" r="3" fill="#A18F76"/>
+</svg></div>
+<div class="info"><div><h2>Sculpted oval</h2><p>A pebble-like body in warm ivory with a terracotta fabric band and a soft-touch control row. Height about 1.45 × width.</p></div>
+<div class="rows"><div class="chips"><div class="chip" style="background:#EDE4D3"></div><div class="chip" style="background:#B5573A"></div><div class="chip" style="background:#CDBFA9"></div><div class="chip" style="background:#5A3F33"></div></div>
+<div class="mats"><figure><div class="sw matte" style="--w:#EDE4D3"></div><figcaption>Ivory soft-touch<br>#EDE4D3</figcaption></figure><figure><div class="sw weave" style="--w:#B5573A"></div><figcaption>Terracotta fabric<br>#B5573A</figcaption></figure><figure><div class="sw perf" style="--w:#E2D5BE"></div><figcaption>Ivory grille<br>#E2D5BE</figcaption></figure></div></div></div>
+</article>
+
+<article class="card c4">
+<div class="stage"><svg viewBox="0 0 400 360" role="img" aria-label="Rectangular speaker with curved edges in brushed metal and fabric, three-quarter view">
+<ellipse cx="212" cy="322" rx="150" ry="13" fill="#231c15" opacity=".34" filter="url(#bl)"/>
+<g transform="translate(0,34)">
+<path d="M312,162 Q312,150 324,144 L338,138 Q350,134 350,146 L350,236 Q350,248 338,254 L322,262 Q312,268 312,256 Z" fill="url(#mS)"/>
+<path d="M92,150 Q92,138 106,134 L330,130 Q346,130 338,141 L322,150 Q316,154 306,154 L96,160 Q90,160 92,150 Z" fill="url(#mT)" opacity="0"/>
+<path d="M70,162 Q70,150 84,146 L104,134 Q112,130 124,130 L330,130 Q346,130 336,142 L322,150 Q314,156 300,156 L84,156 Q70,160 70,162 Z" fill="url(#mT)"/>
+<rect x="70" y="150" width="244" height="124" rx="26" fill="url(#mF)"/>
+<rect x="70" y="150" width="244" height="124" rx="26" fill="url(#brush)"/>
+<rect x="98" y="174" width="188" height="76" rx="14" fill="#5E5A55"/>
+<rect x="98" y="174" width="188" height="76" rx="14" fill="url(#weave)"/>
+<rect x="98" y="174" width="188" height="76" rx="14" fill="none" stroke="#000" stroke-opacity=".25"/>
+<rect x="172" y="258" width="40" height="3.4" rx="1.7" fill="#FFF1D0"/><rect x="172" y="258" width="40" height="3.4" rx="1.7" fill="#FFF1D0" opacity=".7" filter="url(#gl)"/>
+<g transform="matrix(1,-.38,0,1,0,0)"><rect x="150" y="214" width="26" height="8" rx="4" fill="#2D2C2B"/><rect x="190" y="214" width="26" height="8" rx="4" fill="#2D2C2B"/><rect x="230" y="214" width="26" height="8" rx="4" fill="#2D2C2B"/></g>
+<path d="M96,153 Q96,150 104,150 L296,150" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.2"/>
+</g>
+</svg></div>
+<div class="info"><div><h2>Brushed bar</h2><p>A rectangular body with generous curved edges, brushed metal and a recessed fabric panel. Width about 1.9 × height.</p></div>
+<div class="rows"><div class="chips"><div class="chip" style="background:#B9B5AD"></div><div class="chip" style="background:#5E5A55"></div><div class="chip" style="background:#2D2C2B"></div><div class="chip" style="background:#FFF1D0"></div></div>
+<div class="mats"><figure><div class="sw brushed"></div><figcaption>Brushed metal<br>#B9B5AD</figcaption></figure><figure><div class="sw weave" style="--w:#5E5A55"></div><figcaption>Fabric inset<br>#5E5A55</figcaption></figure><figure><div class="sw matte" style="--w:#2D2C2B"></div><figcaption>Control keys<br>#2D2C2B</figcaption></figure></div></div></div>
+</article>
+
+</div>
+<footer>Vector-rendered studio visualisations of four conceptual forms. Colours and materials are digital approximations. No brand marks are used.</footer>
+</main>
+</body>
+</html>
